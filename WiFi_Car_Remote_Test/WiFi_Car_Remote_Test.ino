@@ -15,6 +15,21 @@ int pin_3 = D3;
 int pin_4 = D4;
 int pin_7 = D7;
 int pin_8 = D8;
+char W_KEY = 'w';
+char X_KEY = 'x';
+char A_KEY = 'a';
+char D_KEY = 'd';
+char Q_KEY = 'q';
+char E_KEY = 'e';
+char Z_KEY = 'z';
+char C_KEY = 'c';
+char S_KEY = 's';
+char J_KEY = 'j';
+char K_KEY = 'k';
+char U_KEY = 'u';
+char I_KEY = 'i';
+char O_KEY = 'o';
+char L_KEY = 'l';
 
 const char* WEB = 
 "<!DOCTYPE HTML>"
@@ -23,20 +38,37 @@ const char* WEB =
 "<title>Arduino UNO WiFi Control</title>"
 "<style>"
 "html {background-color: #252525;width: 100%;}"
-"div {display: flex;align-items: center;justify-content: center;}"
+"div {display: flex;align-items: center;justify-content: space-between;}"
 "header {color: crimson;font-family: Tahoma, Geneva, sans-serif;font-size: 36pt;font-weight: bold;width: 100%;text-align: center;}"
-"a {background-color: crimson;border-width: 0;color: snow;font-family: Tahoma, Geneva, sans-serif;font-size: 24pt;font-weight: bold;display: flex;align-items: center;justify-content: center;text-decoration:none;width: 256px;height: 256px;}"
+"a {background-color: crimson;border-width: 0;color: snow;font-family: Tahoma, Geneva, sans-serif;font-size: 12pt;font-weight: bold;display: flex;align-items: center;justify-content: center;text-decoration:none;text-align: center;width: 128px;height: 128px;}"
 "a:hover {box-shadow: 0 5px 10px 0 rgba(255, 255, 255, 0.25), 0 5px 20px 0 rgba(255, 255, 255, 0.25);cursor: pointer;}"
 "</style>"
 "</head>"
 "<body>"
 "<header>Arduino Robot Web Controller</header>"
 "<div>"
+"<div>"
 "<table>"
-"<tr><td><a href=\"DecreaseSpeed\">DECREASE<br>SPEED</a></td><td><a href=\"Forward\">FORWARD</a></td><td><a href=\"IncreaseSpeed\">INCREASE<br>SPEED</a></td></tr>"
+"<tr><td><a href=\"#\"></a></td><td><a href=\"Forward\">FORWARD</a></td><td><a href=\"#\"></a></td></tr>"
 "<tr><td><a href=\"TurnLeft\">LEFT</a></td><td><a href=\"Stop\">STOP</a></td><td><a href=\"TurnRight\">RIGHT</a></td></tr>"
-"<tr><td><a href=\"LeftRotate\">LEFT<br>ROTATE</a></td><td><a href=\"Backward\">BACKWARD</a></td><td><a href=\"RightRotate\">RIGHT<br>ROTATE</a></td></tr>"
-"<tr><td><a href=\"ForwardBit\">FORWARD<br>BIT</a></td><td><a href=\"#\"></a></td><td><a href=\"BackwardBit\">BACKWARD<br>BIT</a></td></tr>"
+"<tr><td><a href=\"#\"></a></td><td><a href=\"Backward\">BACKWARD</a></td><td><a href=\"#\"></a></td></tr>"
+"</table>"
+"</div>"
+"<div>"
+"<table>"
+"<tr><td><a href=\"#\"></a></td><td><a href=\"ForwardBit\">FORWARD<br>BIT</a></td><td><a href=\"#\"></a></td></tr>"
+"<tr><td><a href=\"LeftBit\">LEFT<br>BIT</a></td><td><a href=\"Stop\">STOP</a></td><td><a href=\"RightBit\">RIGHT<br>BIT</a></td></tr>"
+"<tr><td><a href=\"#\"></a></td><td><a href=\"BackwardBit\">BACKWARD<br>BIT</a></td><td><a href=\"#\"></a></td></tr>"
+"</table>"
+"</div>"
+"</div>"
+"<div>"
+"<a href=\"DecreaseSpeed\">DECREASE<br>SPEED</a>"
+"<a href=\"IncreaseSpeed\">INCREASE<br>SPEED</a>"
+"<a href=\"LeftRotate\">LEFT<br>ROTATE</a>"
+"<a href=\"RightRotate\">RIGHT<br>ROTATE</a>"
+"<a href=\"GrabBit\">GRAB<br>BIT</a>"
+"<a href=\"Release\">RELEASE</a>"
 "</div>"
 "</body>"
 "</html>";
@@ -58,7 +90,6 @@ void setup(void) {
   
   WiFi.mode(WIFI_AP);
   WiFi.softAP(WIFISSID, WIFIPASS);
-//  WiFi.begin();
   
   Serial.println("");
   Serial.print("Connected to ");
@@ -75,58 +106,78 @@ void setup(void) {
   });
 
   server.on("/DecreaseSpeed", [](){
-    mySerial.write(113);
+    mySerial.write(Q_KEY);
     server.send(200, "text/html", WEB);
   });
 
   server.on("/IncreaseSpeed", [](){
-    mySerial.write(101);
+    mySerial.write(E_KEY);
     server.send(200, "text/html", WEB);
   });
   
   server.on("/Forward", [](){
     signalControl(HIGH, LOW, LOW, LOW);
-    mySerial.write(119);
+    mySerial.write(W_KEY);
     server.send(200, "text/html", WEB);
   });
   
   server.on("/Backward", [](){
     signalControl(LOW, LOW, LOW, HIGH); 
-    mySerial.write(120);
+    mySerial.write(X_KEY);
     server.send(200, "text/html", WEB);
   });
   
   server.on("/TurnLeft", [](){
     signalControl(LOW, HIGH, LOW, LOW);
-    mySerial.write(97);
+    mySerial.write(A_KEY);
     server.send(200, "text/html", WEB);
   });
   
   server.on("/TurnRight", [](){
     signalControl(LOW, LOW, HIGH, LOW);
-    mySerial.write(100);
+    mySerial.write(D_KEY);
     server.send(200, "text/html", WEB);
   });
 
   server.on("/LeftRotate", [](){
     signalControl(HIGH, LOW, LOW, HIGH);
-    mySerial.write(122);
+    mySerial.write(Z_KEY);
     server.send(200, "text/html", WEB);
   });
 
   server.on("/RightRotate", [](){
     signalControl(LOW, HIGH, HIGH, LOW);
-    mySerial.write(99);
+    mySerial.write(C_KEY);
     server.send(200, "text/html", WEB);
   });
 
   server.on("/ForwardBit", [](){
-    mySerial.write(106);
+    mySerial.write(J_KEY);
     server.send(200, "text/html", WEB);
   });
 
   server.on("/BackwardBit", [](){
-    mySerial.write(107);
+    mySerial.write(K_KEY);
+    server.send(200, "text/html", WEB);
+  });
+
+  server.on("/LeftBit", [](){
+    mySerial.write(U_KEY);
+    server.send(200, "text/html", WEB);
+  });
+
+  server.on("/RightBit", [](){
+    mySerial.write(I_KEY);
+    server.send(200, "text/html", WEB);
+  });
+
+  server.on("/GrabBit", [](){
+    mySerial.write(O_KEY);
+    server.send(200, "text/html", WEB);
+  });
+
+  server.on("/Release", [](){
+    mySerial.write(L_KEY);
     server.send(200, "text/html", WEB);
   });
 
@@ -135,7 +186,7 @@ void setup(void) {
     digitalWrite(pin_4, LOW);
     digitalWrite(pin_7, LOW);
     digitalWrite(pin_8, LOW);
-    mySerial.write(115);
+    mySerial.write(S_KEY);
     server.send(200, "text/html", WEB);
   });
   
