@@ -11,7 +11,7 @@ int in4 = 6;
 int enB = 5;
 // servo motor pin
 int servoPin = A5;
-int angle = 0;
+int angle = 180;
 int speed = 255;
 
 Servo myServo;
@@ -26,8 +26,6 @@ void setup() {
   pinMode(in4, OUTPUT);
 
   Serial.begin(115200);
-  myServo.attach(servoPin);
-  myServo.write(angle);
   
 }
 
@@ -93,16 +91,20 @@ void loop() {
   }
 
   if (key == 'o') {
-    angle += 10;
+    myServo.attach(servoPin);
+    angle -= 10;
     myServo.write(angle);
     delay(1000);
+    myServo.detach();
     key = '\0';
   }
 
   if (key == 'l') {
-    angle = 0;
+    myServo.attach(servoPin);
+    angle = 180;
     myServo.write(angle);
     delay(1000);
+    myServo.detach();
     key = '\0';
   }
 
