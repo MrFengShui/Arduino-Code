@@ -26,18 +26,17 @@ void setup() {
   pinMode(in4, OUTPUT);
 
   Serial.begin(115200);
+  myServo.attach(servoPin);
+  myServo.write(180);
   
 }
 
 void loop() {
 
   if (Serial.available() > 0) {
-    key = Serial.read();
-    
-    if (key != '\r' && key != '\n') {
-      Serial.print("The Command: ");
-      Serial.println(key);
-    }
+    key = Serial.read();    
+    Serial.print("The Command: ");
+    Serial.println(key);
 
     if (key == 'w' || key == 'x' || key == 'a' || key == 'd' || key == 's' 
         || key == 'z' || key == 'c' || key == 'j' || key == 'k' 
@@ -66,6 +65,12 @@ void loop() {
     }
   }
 
+  if (key == 'n') {
+    activate(HIGH, LOW, HIGH, LOW, 25);
+    activate(LOW, LOW, LOW, LOW, 10);
+    key = '\0';
+  }
+
   if (key == 'j') {
     activate(HIGH, LOW, HIGH, LOW, 250);
     activate(LOW, LOW, LOW, LOW, 10);
@@ -79,32 +84,28 @@ void loop() {
   }
 
   if (key == 'u') {
-    activate(LOW, LOW, HIGH, LOW, 250);
+    activate(LOW, LOW, HIGH, LOW, 100);
     activate(LOW, LOW, LOW, LOW, 10);
     key = '\0';
   }
 
   if (key == 'i') {
-    activate(HIGH, LOW, LOW, LOW, 250);
+    activate(HIGH, LOW, LOW, LOW, 100);
     activate(LOW, LOW, LOW, LOW, 10);
     key = '\0';
   }
 
   if (key == 'o') {
-    myServo.attach(servoPin);
     angle -= 10;
     myServo.write(angle);
     delay(1000);
-    myServo.detach();
     key = '\0';
   }
 
   if (key == 'l') {
-    myServo.attach(servoPin);
     angle = 180;
     myServo.write(angle);
     delay(1000);
-    myServo.detach();
     key = '\0';
   }
 
