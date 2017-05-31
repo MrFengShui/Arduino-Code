@@ -77,8 +77,26 @@ void loop() {
     key = '\0';
   }
 
+  if (key == 'm') {
+    activate(HIGH, LOW, HIGH, LOW, 15);
+    activate(LOW, LOW, LOW, LOW, 10);
+    key = '\0';
+  }
+
+  if (key == 'b') {
+    activate(LOW, HIGH, LOW, HIGH, 25);
+    activate(LOW, LOW, LOW, LOW, 10);
+    key = '\0';
+  }
+
   if (key == 'k') {
     activate(LOW, HIGH, LOW, HIGH, 250);
+    activate(LOW, LOW, LOW, LOW, 10);
+    key = '\0';
+  }
+
+  if (key == 'v') {
+    activate(LOW, HIGH, LOW, HIGH, 15);
     activate(LOW, LOW, LOW, LOW, 10);
     key = '\0';
   }

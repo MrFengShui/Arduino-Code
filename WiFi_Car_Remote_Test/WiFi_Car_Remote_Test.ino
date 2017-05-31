@@ -15,21 +15,26 @@ int pin_3 = D3;
 int pin_4 = D4;
 int pin_7 = D7;
 int pin_8 = D8;
-char W_KEY = 'w';
-char X_KEY = 'x';
+
 char A_KEY = 'a';
-char D_KEY = 'd';
-char Q_KEY = 'q';
-char E_KEY = 'e';
-char Z_KEY = 'z';
+char B_KEY = 'b';
 char C_KEY = 'c';
-char S_KEY = 's';
+char D_KEY = 'd';
+char E_KEY = 'e';
+char I_KEY = 'i';
 char J_KEY = 'j';
 char K_KEY = 'k';
-char U_KEY = 'u';
-char I_KEY = 'i';
-char O_KEY = 'o';
 char L_KEY = 'l';
+char M_KEY = 'm';
+char N_KEY = 'n';
+char O_KEY = 'o';
+char Q_KEY = 'q';
+char S_KEY = 's';
+char U_KEY = 'u';
+char V_KEY = 'v';
+char W_KEY = 'w';
+char X_KEY = 'x';
+char Z_KEY = 'z';
 
 const char* WEB = 
 "<!DOCTYPE HTML>"
@@ -56,9 +61,9 @@ const char* WEB =
 "</div>"
 "<div>"
 "<table>"
-"<tr><td><a href=\"#\"></a></td><td><a href=\"ForwardBit\">FORWARD<br>BIT</a></td><td><a href=\"#\"></a></td></tr>"
+"<tr><td><a href=\"Forward25\">FORWARD<br>25MS</a></td><td><a href=\"ForwardBit\">FORWARD<br>BIT</a></td><td><a href=\"Forward15\">FORWARD<br>15MS</a></td></tr>"
 "<tr><td><a href=\"LeftBit\">LEFT<br>BIT</a></td><td><a href=\"Stop\">STOP</a></td><td><a href=\"RightBit\">RIGHT<br>BIT</a></td></tr>"
-"<tr><td><a href=\"#\"></a></td><td><a href=\"BackwardBit\">BACKWARD<br>BIT</a></td><td><a href=\"#\"></a></td></tr>"
+"<tr><td><a href=\"Backward25\">BACKWARD<br>25MS</a></td><td><a href=\"BackwardBit\">BACKWARD<br>BIT</a></td><td><a href=\"Backward15\">BACKWARD<br>15</a></td></tr>"
 "</table>"
 "</div>"
 "</div>"
@@ -116,38 +121,37 @@ void setup(void) {
   });
   
   server.on("/Forward", [](){
-    signalControl(HIGH, LOW, LOW, LOW);
     mySerial.write(W_KEY);
     server.send(200, "text/html", WEB);
   });
   
   server.on("/Backward", [](){
-    signalControl(LOW, LOW, LOW, HIGH); 
     mySerial.write(X_KEY);
     server.send(200, "text/html", WEB);
   });
   
   server.on("/TurnLeft", [](){
-    signalControl(LOW, HIGH, LOW, LOW);
     mySerial.write(A_KEY);
     server.send(200, "text/html", WEB);
   });
   
   server.on("/TurnRight", [](){
-    signalControl(LOW, LOW, HIGH, LOW);
     mySerial.write(D_KEY);
     server.send(200, "text/html", WEB);
   });
 
   server.on("/LeftRotate", [](){
-    signalControl(HIGH, LOW, LOW, HIGH);
     mySerial.write(Z_KEY);
     server.send(200, "text/html", WEB);
   });
 
   server.on("/RightRotate", [](){
-    signalControl(LOW, HIGH, HIGH, LOW);
     mySerial.write(C_KEY);
+    server.send(200, "text/html", WEB);
+  });
+
+  server.on("/Forward25", [](){
+    mySerial.write(N_KEY);
     server.send(200, "text/html", WEB);
   });
 
@@ -156,8 +160,23 @@ void setup(void) {
     server.send(200, "text/html", WEB);
   });
 
+  server.on("/Forward15", [](){
+    mySerial.write(M_KEY);
+    server.send(200, "text/html", WEB);
+  });
+
+  server.on("/Backward25", [](){
+    mySerial.write(B_KEY);
+    server.send(200, "text/html", WEB);
+  });
+
   server.on("/BackwardBit", [](){
     mySerial.write(K_KEY);
+    server.send(200, "text/html", WEB);
+  });
+
+  server.on("/Backward15", [](){
+    mySerial.write(V_KEY);
     server.send(200, "text/html", WEB);
   });
 
