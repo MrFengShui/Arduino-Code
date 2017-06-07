@@ -147,7 +147,7 @@ void loop() {
   }
 
   if (key == 'm') {
-    activate(HIGH, LOW, HIGH, LOW, 15);
+    activate(HIGH, LOW, HIGH, LOW, 50);
     activate(LOW, LOW, LOW, LOW, 10);
     key = '\0';
   }
@@ -165,7 +165,7 @@ void loop() {
   }
 
   if (key == 'v') {
-    activate(LOW, HIGH, LOW, HIGH, 15);
+    activate(LOW, HIGH, LOW, HIGH, 50);
     activate(LOW, LOW, LOW, LOW, 10);
     key = '\0';
   }
