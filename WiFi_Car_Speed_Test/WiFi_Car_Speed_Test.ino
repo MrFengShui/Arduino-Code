@@ -10,7 +10,7 @@ int in4 = 4;
 int enB = 3;
 // servo motor pin
 int servoPin_1 = A5;
-int servoPin_2 = A4;
+int servoPin_2 = A0;
 int angle = 180;
 char key;
 int speed = 255;
@@ -107,129 +107,87 @@ void loop() {
     myServo_2.detach();
     key = '\0';
   }
-  // Forward and Backward Action
+  // Move Forward
   if (key == 'q') {
     activate(LOW, HIGH, HIGH, LOW, 1000);
   }
-
+  // Move Backward
   if (key == 'a') {
     activate(HIGH, LOW, LOW, HIGH, 1000);
   }
-
+  // Move Forward 350ms
   if (key == 'r') {
     activate(LOW, HIGH, HIGH, LOW, 350);
     activate(LOW, LOW, LOW, LOW, 1000);
     key = '\0';
   }
-  
+  // Move Backward 350ms
   if (key == 'f') {
     activate(HIGH, LOW, LOW, HIGH, 350);
     activate(LOW, LOW, LOW, LOW, 1000);
     key = '\0';
   }
-
+  // Move Forward 250ms
   if (key == 'w') {
     activate(LOW, HIGH, HIGH, LOW, 250);
     activate(LOW, LOW, LOW, LOW, 1000);
     key = '\0';
   }
-  
+  // Move Backward 250ms
   if (key == 's') {
     activate(HIGH, LOW, LOW, HIGH, 250);
     activate(LOW, LOW, LOW, LOW, 1000);
     key = '\0';
   }
-
-  if (key == 'j') {
-    activate(HIGH, LOW, HIGH, LOW, 250);
-    activate(LOW, LOW, LOW, LOW, 10);
-    key = '\0';
-  }
-
-  if (key == 'm') {
-    activate(HIGH, LOW, HIGH, LOW, 50);
-    activate(LOW, LOW, LOW, LOW, 10);
-    key = '\0';
-  }
-
-  if (key == 'b') {
-    activate(LOW, HIGH, LOW, HIGH, 25);
-    activate(LOW, LOW, LOW, LOW, 10);
-    key = '\0';
-  }
-
-  if (key == 'k') {
-    activate(LOW, HIGH, LOW, HIGH, 250);
-    activate(LOW, LOW, LOW, LOW, 10);
-    key = '\0';
-  }
-
-  if (key == 'v') {
-    activate(LOW, HIGH, LOW, HIGH, 50);
-    activate(LOW, LOW, LOW, LOW, 10);
-    key = '\0';
-  }
-
-  if (key == 'u') {
-    activate(LOW, LOW, HIGH, LOW, 100);
-    activate(LOW, LOW, LOW, LOW, 10);
-    key = '\0';
-  }
-
-  if (key == 'i') {
-    activate(HIGH, LOW, LOW, LOW, 100);
-    activate(LOW, LOW, LOW, LOW, 10);
-    key = '\0';
-  }
-
+  // Move Forward 150ms
   if (key == 'e') {
     activate(LOW, HIGH, HIGH, LOW, 150);
     activate(LOW, LOW, LOW, LOW, 1000);
     key = '\0';
   }
-  
+  // Move Backward 150ms
   if (key == 'd') {
     activate(HIGH, LOW, LOW, HIGH, 150);
     activate(LOW, LOW, LOW, LOW, 1000);
     key = '\0';
   }
-  // Rotate, Left, and Right Action
+  // Turn Left
   if (key == 'o') {
     activate(LOW, LOW, HIGH, LOW, 250);
     activate(LOW, LOW, LOW, LOW, 1000);
     key = '\0';
   }
-
+  // Turn Right
   if (key == 'l') {
     activate(LOW, HIGH, LOW, LOW, 250);
     activate(LOW, LOW, LOW, LOW, 1000);
     key = '\0';
   }
-
+  // Rotate Left 90 Degree
   if (key == 'i') {
     activate(HIGH, LOW, HIGH, LOW, 500);
     activate(LOW, LOW, LOW, LOW, 1000);
     key = '\0';
   }
-
+  // Rotate Right 90 Degree
   if (key == 'k') {
     activate(LOW, HIGH, LOW, HIGH, 500);
     activate(LOW, LOW, LOW, LOW, 1000);
     key = '\0';
   }
-
+  // Rotate Left 180 Degree
   if (key == 'u') {
     activate(HIGH, LOW, HIGH, LOW, 1000);
     activate(LOW, LOW, LOW, LOW, 1000);
     key = '\0';
   }
-
+  // Rotate Right 180 Degree
   if (key == 'j') {
     activate(LOW, HIGH, LOW, HIGH, 1000);
     activate(LOW, LOW, LOW, LOW, 1000);
     key = '\0';
   }
-
+  // Stop
   if (key == 'z') {
     activate(LOW, LOW, LOW, LOW, 1000);
   }
