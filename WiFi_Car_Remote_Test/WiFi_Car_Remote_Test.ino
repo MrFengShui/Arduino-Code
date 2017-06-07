@@ -16,6 +16,7 @@ int pin_4 = D4;
 int pin_7 = D7;
 int pin_8 = D8;
 
+<<<<<<< HEAD
 char B_KEY = 'b';
 char N_KEY = 'n';
 char M_KEY = 'm';
@@ -40,6 +41,26 @@ char K_KEY = 'k';
 char U_KEY = 'u';
 char J_KEY = 'j';
 
+=======
+char A_KEY = 'a';
+char B_KEY = 'b';
+char C_KEY = 'c';
+char D_KEY = 'd';
+char E_KEY = 'e';
+char I_KEY = 'i';
+char J_KEY = 'j';
+char K_KEY = 'k';
+char L_KEY = 'l';
+char M_KEY = 'm';
+char N_KEY = 'n';
+char O_KEY = 'o';
+char Q_KEY = 'q';
+char S_KEY = 's';
+char U_KEY = 'u';
+char V_KEY = 'v';
+char W_KEY = 'w';
+char X_KEY = 'x';
+>>>>>>> bd34c9d42645c7410acb4a7c4d3a939c071e35aa
 char Z_KEY = 'z';
 
 const char* WEB = 
@@ -67,9 +88,15 @@ const char* WEB =
 "</div>"
 "<div>"
 "<table>"
+<<<<<<< HEAD
 "<tr><td><a href=\"Forward25\">FORWARD<br>25</a></td><td><a href=\"Forward35\">FORWARD<br>35</a></td><td><a href=\"Forward15\">FORWARD<br>15</a></td></tr>"
 "<tr><td><a href=\"TurnLeft\">LEFT</a></td><td><a href=\"Stop\">STOP</a></td><td><a href=\"TurnRight\">RIGHT</a></td></tr>"
 "<tr><td><a href=\"Backward25\">BACKWARD<br>25</a></td><td><a href=\"Backward35\">BACKWARD<br>35</a></td><td><a href=\"Backward15\">BACKWARD<br>15</a></td></tr>"
+=======
+"<tr><td><a href=\"Forward25\">FORWARD<br>25MS</a></td><td><a href=\"ForwardBit\">FORWARD<br>BIT</a></td><td><a href=\"Forward15\">FORWARD<br>15MS</a></td></tr>"
+"<tr><td><a href=\"LeftBit\">LEFT<br>BIT</a></td><td><a href=\"Stop\">STOP</a></td><td><a href=\"RightBit\">RIGHT<br>BIT</a></td></tr>"
+"<tr><td><a href=\"Backward25\">BACKWARD<br>25MS</a></td><td><a href=\"BackwardBit\">BACKWARD<br>BIT</a></td><td><a href=\"Backward15\">BACKWARD<br>15</a></td></tr>"
+>>>>>>> bd34c9d42645c7410acb4a7c4d3a939c071e35aa
 "</table>"
 "</div>"
 "</div>"
@@ -179,21 +206,34 @@ void res_snd_grab() {
 void lhs_control() {
 
   server.on("/Forward", [](){
+<<<<<<< HEAD
     mySerial.write(Q_KEY);
+=======
+    mySerial.write(W_KEY);
+>>>>>>> bd34c9d42645c7410acb4a7c4d3a939c071e35aa
     server.send(200, "text/html", WEB);
   });
   
   server.on("/Backward", [](){
+<<<<<<< HEAD
     mySerial.write(A_KEY);
+=======
+    mySerial.write(X_KEY);
+>>>>>>> bd34c9d42645c7410acb4a7c4d3a939c071e35aa
     server.send(200, "text/html", WEB);
   });
   
   server.on("/TurnLeft", [](){
+<<<<<<< HEAD
     mySerial.write(O_KEY);
+=======
+    mySerial.write(A_KEY);
+>>>>>>> bd34c9d42645c7410acb4a7c4d3a939c071e35aa
     server.send(200, "text/html", WEB);
   });
   
   server.on("/TurnRight", [](){
+<<<<<<< HEAD
     mySerial.write(L_KEY);
     server.send(200, "text/html", WEB);
   });
@@ -215,15 +255,63 @@ void lhs_control() {
 
   server.on("/RotateRight180", [](){
     mySerial.write(J_KEY);
+=======
+    mySerial.write(D_KEY);
+    server.send(200, "text/html", WEB);
+  });
+
+  server.on("/LeftRotate", [](){
+    mySerial.write(Z_KEY);
+    server.send(200, "text/html", WEB);
+  });
+
+  server.on("/RightRotate", [](){
+    mySerial.write(C_KEY);
+    server.send(200, "text/html", WEB);
+  });
+
+  server.on("/Forward25", [](){
+    mySerial.write(N_KEY);
+    server.send(200, "text/html", WEB);
+  });
+
+  server.on("/ForwardBit", [](){
+    mySerial.write(J_KEY);
+    server.send(200, "text/html", WEB);
+  });
+
+  server.on("/Forward15", [](){
+    mySerial.write(M_KEY);
+    server.send(200, "text/html", WEB);
+  });
+
+  server.on("/Backward25", [](){
+    mySerial.write(B_KEY);
+    server.send(200, "text/html", WEB);
+  });
+
+  server.on("/BackwardBit", [](){
+    mySerial.write(K_KEY);
+>>>>>>> bd34c9d42645c7410acb4a7c4d3a939c071e35aa
     server.send(200, "text/html", WEB);
   });
   
 }
 
+<<<<<<< HEAD
 void rhs_control() {
 
   server.on("/Forward35", [](){
     mySerial.write(R_KEY);
+=======
+  server.on("/Backward15", [](){
+    mySerial.write(V_KEY);
+    server.send(200, "text/html", WEB);
+  });
+
+  server.on("/LeftBit", [](){
+    mySerial.write(U_KEY);
+>>>>>>> bd34c9d42645c7410acb4a7c4d3a939c071e35aa
     server.send(200, "text/html", WEB);
   });
 

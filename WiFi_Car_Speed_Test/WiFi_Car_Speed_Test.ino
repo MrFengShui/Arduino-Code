@@ -25,16 +25,22 @@ void setup() {
   pinMode(in3, OUTPUT);
   pinMode(in4, OUTPUT);
   Serial.begin(115200);
+<<<<<<< HEAD
   myServo_1.attach(servoPin_1);
   myServo_1.write(angle);
   myServo_2.attach(servoPin_2);
   myServo_2.write(angle);
+=======
+  myServo.attach(servoPin);
+  myServo.write(180);
+>>>>>>> bd34c9d42645c7410acb4a7c4d3a939c071e35aa
   
 }
 
 void loop() {
 
   if (Serial.available() > 0) {
+<<<<<<< HEAD
     key = Serial.read();
     Serial.print("The Command: ");
     Serial.println(key);
@@ -65,6 +71,11 @@ void loop() {
     delay(1000);
     key = '\0';
   }
+=======
+    key = Serial.read();    
+    Serial.print("The Command: ");
+    Serial.println(key);
+>>>>>>> bd34c9d42645c7410acb4a7c4d3a939c071e35aa
 
   if (key == 'm') {
     angle = 180;
@@ -116,6 +127,7 @@ void loop() {
     activate(HIGH, LOW, LOW, HIGH, 1000);
   }
 
+<<<<<<< HEAD
   if (key == 'r') {
     activate(LOW, HIGH, HIGH, LOW, 350);
     activate(LOW, LOW, LOW, LOW, 1000);
@@ -137,6 +149,53 @@ void loop() {
   if (key == 's') {
     activate(HIGH, LOW, LOW, HIGH, 250);
     activate(LOW, LOW, LOW, LOW, 1000);
+=======
+  if (key == 'n') {
+    activate(HIGH, LOW, HIGH, LOW, 25);
+    activate(LOW, LOW, LOW, LOW, 10);
+    key = '\0';
+  }
+
+  if (key == 'j') {
+    activate(HIGH, LOW, HIGH, LOW, 250);
+    activate(LOW, LOW, LOW, LOW, 10);
+    key = '\0';
+  }
+
+  if (key == 'm') {
+    activate(HIGH, LOW, HIGH, LOW, 15);
+    activate(LOW, LOW, LOW, LOW, 10);
+    key = '\0';
+  }
+
+  if (key == 'b') {
+    activate(LOW, HIGH, LOW, HIGH, 25);
+    activate(LOW, LOW, LOW, LOW, 10);
+    key = '\0';
+  }
+
+  if (key == 'k') {
+    activate(LOW, HIGH, LOW, HIGH, 250);
+    activate(LOW, LOW, LOW, LOW, 10);
+    key = '\0';
+  }
+
+  if (key == 'v') {
+    activate(LOW, HIGH, LOW, HIGH, 15);
+    activate(LOW, LOW, LOW, LOW, 10);
+    key = '\0';
+  }
+
+  if (key == 'u') {
+    activate(LOW, LOW, HIGH, LOW, 100);
+    activate(LOW, LOW, LOW, LOW, 10);
+    key = '\0';
+  }
+
+  if (key == 'i') {
+    activate(HIGH, LOW, LOW, LOW, 100);
+    activate(LOW, LOW, LOW, LOW, 10);
+>>>>>>> bd34c9d42645c7410acb4a7c4d3a939c071e35aa
     key = '\0';
   }
 
@@ -153,14 +212,26 @@ void loop() {
   }
   // Rotate, Left, and Right Action
   if (key == 'o') {
+<<<<<<< HEAD
     activate(LOW, LOW, HIGH, LOW, 250);
     activate(LOW, LOW, LOW, LOW, 1000);
+=======
+    angle -= 10;
+    myServo.write(angle);
+    delay(1000);
+>>>>>>> bd34c9d42645c7410acb4a7c4d3a939c071e35aa
     key = '\0';
   }
 
   if (key == 'l') {
+<<<<<<< HEAD
     activate(LOW, HIGH, LOW, LOW, 250);
     activate(LOW, LOW, LOW, LOW, 1000);
+=======
+    angle = 180;
+    myServo.write(angle);
+    delay(1000);
+>>>>>>> bd34c9d42645c7410acb4a7c4d3a939c071e35aa
     key = '\0';
   }
 
