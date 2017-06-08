@@ -26,7 +26,7 @@ void setup() {
   pinMode(in4, OUTPUT);
   Serial.begin(115200);
   myServo_1.attach(servoPin_1);
-  myServo_1.write(angle);
+  myServo_1.write(0);
   myServo_2.attach(servoPin_2);
   myServo_2.write(angle);
 
@@ -43,11 +43,11 @@ void loop() {
   if (key == 'b') {
     if (!myServo_1.attached()) {
       myServo_1.attach(servoPin_1);
-      angle = 180;
+      angle = 0;
       myServo_1.write(angle);
     }
     
-    angle -= 60;
+    angle += 50;
     myServo_1.write(angle);
     delay(1000);
     key = '\0';
@@ -56,18 +56,18 @@ void loop() {
   if (key == 'n') {
     if (!myServo_1.attached()) {
       myServo_1.attach(servoPin_1);
-      angle = 180;
+      angle = 0;
       myServo_1.write(angle);
     }
     
-    angle -= 10;
+    angle += 10;
     myServo_1.write(angle);
     delay(1000);
     key = '\0';
   }
 
   if (key == 'm') {
-    angle = 180;
+    angle = 0;
     myServo_1.write(angle);
     delay(1000);
     myServo_1.detach();
